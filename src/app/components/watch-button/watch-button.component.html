@@ -1,0 +1,47 @@
+<ng-template #wmessage>
+  {{ date | date: 'dd' }} de {{ date | date: 'MMMM' }} de
+  {{ date | date: 'yyyy' }}
+</ng-template>
+<ng-template #popTitle>
+  <div class="float-right">
+    <i class="fas fa-times" style="cursor: pointer" (click)="p.close()"></i>
+  </div>
+  Quando você assistiu?
+</ng-template>
+
+<ng-template #popDateTime>
+  <ngb-datepicker
+    #dp
+    [(ngModel)]="model"
+    (navigate)="date = $event.next"
+  ></ngb-datepicker>
+  <button
+    type="button"
+    class="btn btn-primary btn-sm btn-block"
+    (click)="onDateSelect()"
+    (click)="p.close()"
+  >
+    Selecionar
+  </button>
+</ng-template>
+
+<div
+  [class.btn-outline-secondary]="!watched"
+  [class.btn-primary]="watched"
+  class="btn btn-block text-left"
+  placement="bottom"
+  [ngbPopover]="popDateTime"
+  [popoverTitle]="popTitle"
+  [autoClose]="false"
+  triggers="manual"
+  #p="ngbPopover"
+  (click)="p.open()"
+>
+  <i [class.fas]="date" [class.far]="!date" class="fa-check-circle"></i>
+  <div class="text">
+    <div class="main-info">
+      <span *ngIf="!watched; else wmessage">Não Assistido</span>
+    </div>
+  </div>
+  <div class="side-btn"><i class="fas fa-history"></i></div>
+</div>

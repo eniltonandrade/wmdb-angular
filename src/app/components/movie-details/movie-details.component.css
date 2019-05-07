@@ -1,0 +1,74 @@
+.profile-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.card-title h2 {
+  color: #fff;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.spinner-area {
+  height: 100%;
+}
+.person-item {
+  width: 258px;
+  height: 75px;
+  padding: 0 5px;
+  overflow: hidden;
+}
+
+.person-item a {
+  color: white;
+}
+.person-item a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.media-body {
+  font-size: 12px;
+}
+
+.media-body h5 {
+  font-size: 15px;
+}
+
+.poster {
+  border: 1px solid #ebebeb;
+  width: 90%;
+}
+
+h5 {
+  width: 100%;
+  float: left;
+}
+
+.score {
+  padding: 2px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  display: block;
+  width: 90px;
+  line-height: 42px;
+}
+
+.score i {
+  margin-right: 5px;
+  font-size: 39px;
+  float: let;
+  line-height: 42px;
+  vertical-align: middle;
+}
+
+.score .score-text {
+  font-size: 26px;
+  float: right;
+  font-weight: bold;
+}
+
+.sticky-top {
+  top: 15px;
+}

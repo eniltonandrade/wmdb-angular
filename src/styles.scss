@@ -1,0 +1,47 @@
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
+@import url(https://use.fontawesome.com/releases/v5.7.1/css/all.css);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
+
+//Colors
+$primary: #6ac045;
+$gray-primary: #283038;
+$gray-dark: #14181c;
+$gray-light: #abc;
+$gray-light-2: #a9cdf2;
+$body-bg: $gray-dark;
+
+//Theme
+$theme-colors: (
+  "primary": $primary,
+  "danger": #ff4136
+);
+$body-color:$gray-light;
+$link-color: $gray-light-2;
+
+//Nav
+$nav-tabs-link-active-bg: transparent;
+$nav-tabs-link-active-border-color: $gray-light;
+$nav-tabs-border-color: $gray-light;
+$nav-tabs-link-active-color: white;
+
+//Cards
+$card-border-width: 0;
+$card-bg: none;
+$popover-header-color: $gray-primary;
+
+
+@import "~bootstrap/scss/bootstrap";
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background: $gray-primary url(../src/assets/img/bg.png) repeat;  
+    font-size: 0.9rem;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+.badge-primary, .btn-primary {
+    color: #fff;
+}
+  

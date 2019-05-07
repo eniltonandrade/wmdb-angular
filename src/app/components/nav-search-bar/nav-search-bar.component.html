@@ -1,0 +1,21 @@
+<form #f="ngForm" class="form-inline ml-auto my-2 my-lg-0 d-none d-xl-block" >
+    <input class="form-control mr-sm-2 nav-search" 
+            autocomplete="off" 
+            name="query"
+            type="search" 
+            placeholder="Buscar Filme" 
+            aria-label="Buscar Filme"
+            (keyup)="searchMovie()"
+            [(ngModel)]="query">
+  </form>
+  <div class="result-list" *ngIf="hasResults">
+    <div *ngFor="let result of results" class="result-item">
+      <a [routerLink]="['/filme', result.id, getSlug(result.title)]" (click)="clearResults()">
+        <img *ngIf="result.poster_path" src="{{ poster_url + result.poster_path }}" alt="" class="img-poster">
+        <span>
+          <span class="item-title">{{ result.title }} ({{ result.release_date | date:'yyyy' }})</span>
+          <span class="item-title-orig">{{ result.original_title }}</span>
+        </span>
+      </a>
+  </div>
+</div>

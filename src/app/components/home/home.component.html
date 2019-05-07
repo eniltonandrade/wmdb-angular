@@ -1,0 +1,19 @@
+<home-statics-top></home-statics-top>
+<div class="poster-gallery d-block mt-5 ">
+  <h4>Assistidos Recentemente</h4>
+
+  <div class="row" *ngIf="movies">
+    <movie-list-item
+      *ngFor="let movie of movies.data"
+      [movie]="movie"
+    ></movie-list-item>
+  </div>
+
+  <div *ngIf="!movies" class="row" style="height:200px">
+    <div class="col-sm-12 my-auto d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>
