@@ -50,6 +50,14 @@ export class WatchbuttonComponent implements OnInit, OnDestroy, OnChanges {
 
     let castArray = [];
     let crewArray = [];
+    let genresArray = [];
+
+    genresArray = this.movie.casts.genres.map(genres => {
+      return {
+        tmdbId: genres.id,
+        name: genres.name
+      };
+    });
 
     castArray = this.movie.casts.cast.map(cast => {
       return {
@@ -75,6 +83,7 @@ export class WatchbuttonComponent implements OnInit, OnDestroy, OnChanges {
 
     console.log(castArray);
     console.log(crewArray);
+    console.log(genresArray);
 
     this.watched = true;
     let request = {
