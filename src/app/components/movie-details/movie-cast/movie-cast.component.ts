@@ -10,6 +10,7 @@ import { elementStyleProp } from '@angular/core/src/render3';
 })
 export class MovieCastComponent implements OnInit {
   @Input('casts') casts: Cast[];
+  isCollapsed: boolean = false;
   castsMore: Cast[];
   castsLess: Cast[];
   profile_photo: string;
