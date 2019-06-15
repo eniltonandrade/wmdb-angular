@@ -1,0 +1,61 @@
+<!-- You can now use your library component in app.component.html -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xl-3">
+        <header>
+          <h2>Filmes Assistidos Recentemente</h2>
+          <div class="section-movies-carousel-aside-header" *ngIf="movies">
+            <button
+              (click)="slickModal.slickPrev()"
+              class="slick-prev slick-arrow"
+              aria-label="Previous"
+              type="button"
+              aria-disabled="false"
+              style="display: block;"
+            >
+              <i class="fas fa-chevron-left"></i></button
+            ><button
+              (click)="slickModal.slickNext()"
+              class="slick-next slick-arrow"
+              aria-label="Next"
+              type="button"
+              aria-disabled="false"
+              style="display: block;"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="action"></div>
+        </header>
+      </div>
+      <div class="col-md-12 col-xl-9">
+        <ul class="nav nav-tabs">
+          <li class="nav-item"><a href="#" class="active">Hoje</a></li>
+          <li class="nav-item"><a href="#">Esse Mês</a></li>
+          <li class="nav-item"><a href="#">Esse Ano</a></li>
+        </ul>
+        <div class="loading" *ngIf="!movies">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+
+        <ngx-slick
+          class="carousel"
+          #slickModal="slick-modal"
+          [config]="slideConfig"
+        >
+          <div ngxSlickItem *ngFor="let movie of movies" class="slide">
+            <carousel-item [movie]="movie"></carousel-item>
+          </div>
+        </ngx-slick>
+      </div>
+    </div>
+  </div>
+  <div class="footer-action">
+    <span class="action-inner">
+      <a href="#" class="action-link">Ver Todos</a>
+    </span>
+  </div>
+</section>

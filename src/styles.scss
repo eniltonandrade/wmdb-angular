@@ -1,47 +1,68 @@
-
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
-@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
-@import url(https://use.fontawesome.com/releases/v5.7.1/css/all.css);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
 
 //Colors
 $primary: #6ac045;
-$gray-primary: #283038;
+$secondary: #1a222d;
 $gray-dark: #14181c;
 $gray-light: #abc;
 $gray-light-2: #a9cdf2;
 $body-bg: $gray-dark;
 
-//Theme
+//Them#
 $theme-colors: (
-  "primary": $primary,
-  "danger": #ff4136
+  'primary': $primary,
+  'secondary': #6ac045,
+  'danger': #ff4136
 );
-$body-color:$gray-light;
-$link-color: $gray-light-2;
+$body-color: #fff;
+$link-color: $primary;
 
 //Nav
-$nav-tabs-link-active-bg: transparent;
-$nav-tabs-link-active-border-color: $gray-light;
-$nav-tabs-border-color: $gray-light;
-$nav-tabs-link-active-color: white;
+$nav-tabs-link-active-bg: $secondary;
+$nav-tabs-link-active-border-color: #131722;
+$nav-tabs-border-color: $secondary;
+$nav-tabs-link-active-color: $primary;
+
+//Navbar
+$navbar-dark-color: #fff;
 
 //Cards
 $card-border-width: 0;
 $card-bg: none;
-$popover-header-color: $gray-primary;
+$popover-header-color: $secondary;
 
+//breadcomb
+$breadcrumb-bg: #131722;
 
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
 
-body{
-    font-family: 'Open Sans', sans-serif;
-    background: $gray-primary url(../src/assets/img/bg.png) repeat;  
-    font-size: 0.9rem;
-    -webkit-font-smoothing: antialiased !important;
+body {
+  //font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  background: #131722;
+  font-size: 0.9rem;
 }
 
-.badge-primary, .btn-primary {
-    color: #fff;
+header {
+  padding: 0;
 }
-  
+
+.badge {
+  font-weight: normal;
+  padding: 5px 5px;
+}
+
+.badge-primary,
+.btn-primary {
+  color: $secondary;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button:focus {
+  outline: 0;
+}

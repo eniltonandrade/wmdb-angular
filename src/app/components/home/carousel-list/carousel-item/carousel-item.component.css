@@ -1,0 +1,28 @@
+.movie-poster {
+  margin-bottom: 8px;
+  background-color: #6ac045;
+}
+
+.movie-poster img {
+  width: 100%;
+  min-height: 186px;
+  opacity: 1;
+}
+.movie-poster img:hover {
+  opacity: 0.8;
+}
+
+.movie-title a h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #fff;
+}
+
+.movie-meta {
+  font-size: 12px;
+  line-height: 18px;
+  color: #949cb0;
+  text-align: center;
+}

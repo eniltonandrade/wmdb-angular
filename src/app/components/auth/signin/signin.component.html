@@ -1,0 +1,69 @@
+<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+  <div class="card card-signin my-2">
+    <div class="card-body">
+      <h5 class="card-title text-center">Registrar</h5>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input
+            type="text"
+            formControlName="name"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+          />
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">
+              First Name is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            email
+            formControlName="email"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+          />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Last Name is required</div>
+            <div *ngIf="f.email.errors.email">Email invalido</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+          />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button
+            *ngIf="!loading"
+            class="btn btn-lg btn-primary btn-block text-uppercase mt-4"
+            type="submit"
+          >
+            Registrar
+          </button>
+          <div
+            *ngIf="loading"
+            class="btn btn-lg btn-primary btn-block text-uppercase mt-4"
+          >
+            <div class="spinner-border text-secondary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

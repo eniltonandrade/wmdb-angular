@@ -2,6 +2,7 @@ import { MovieService } from './../../services/movie.service';
 import { TmdbService } from './../../services/tmdb.service';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,16 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  movies: any;
-
-  constructor(private tmdb: TmdbService, private movieService: MovieService) {}
+  month: number = 0;
+  count: number = 0;
+  year: number = 0;
+  constructor(private statsService: StatsService) {}
 
   ngOnInit() {
-    this.movieService.getAll().subscribe(res => {
-      this.movies = res;
-      console.log(this.movies);
+    this.statsService.getCountWatched().subscribe(result => {
+      this.count = result.result.count;
+      this.year = result.result.year;
+      this.month = result.result.month;
     });
   }
 }

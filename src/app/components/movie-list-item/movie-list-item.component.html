@@ -1,19 +1,29 @@
-<div
-    class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-3" >
-    <a [routerLink]="['/filme', movie.tmdbId, slug]">
-      <img src="{{ poster_url + movie.poster }}" alt="" class="rounded">
-    </a>
-    
-    <ng-template #t let-fill="fill">
-        <span class="star" [class.full]="fill === 100">
-          <span class="half" [style.width.%]="fill"><i class="fas fa-star"></i></span><i class="fas fa-star"></i>
-        </span>
-      </ng-template>
-      <div class="movie-star-rating">
-        <ngb-rating [(rate)]="movie.score" [starTemplate]="t" [readonly]="true" max="10"></ngb-rating>
-        <span class="float-right score-number">{{ movie.score | number:'1.1-2'}}</span>
-      </div>
-      <p class="poster-gallery-text">
-        {{ movie.pivot.watched_at | date:'dd' }} de {{ movie.pivot.watched_at | date:'MMMM' }} de {{ movie.pivot.watched_at | date:'yyyy' }}
-      </p>
+<div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-3">
+  <a [routerLink]="['/filme', movie.tmdbId, slug]">
+    <img src="{{ poster_url + movie.poster_path }}" alt="" class="rounded" />
+  </a>
+
+  <ng-template #t let-fill="fill">
+    <span class="star" [class.full]="fill === 100">
+      <span class="half" [style.width.%]="fill"
+        ><i class="fas fa-star"></i></span
+      ><i class="fas fa-star"></i>
+    </span>
+  </ng-template>
+  <div class="movie-star-rating">
+    <ngb-rating
+      [(rate)]="movie.vote_average"
+      [starTemplate]="t"
+      [readonly]="true"
+      max="10"
+    ></ngb-rating>
+    <span class="float-right score-number">{{
+      movie.vote_average | number: '1.1-2'
+    }}</span>
+  </div>
+  <p class="poster-gallery-text">
+    {{ movie.UserMovies.watchedAt | date: 'dd' }} de
+    {{ movie.UserMovies.watchedAt | date: 'MMMM' }} de
+    {{ movie.UserMovies.watchedAt | date: 'yyyy' }}
+  </p>
 </div>

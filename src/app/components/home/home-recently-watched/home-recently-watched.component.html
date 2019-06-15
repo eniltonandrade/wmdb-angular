@@ -1,0 +1,39 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xl-3">
+        <header>
+          <h2>Filmes Assistidos Recentemente</h2>
+          <div class="action"></div>
+        </header>
+      </div>
+      <!-- row header -->
+      <div class="col-md-12 col-xl-9">
+        <div class="movie-list row no-gutters">
+          <div
+            *ngFor="let movie of movies"
+            class="movie col-6 col-sm-4 col-lg-3 col-xl-2 px-1"
+          >
+            <div class="movie-poster">
+              <div class="movie-date">
+                <span> {{ movie.watchedAt }} </span>
+              </div>
+              <a href="">
+                <img [src]="movie.poster_path" alt="" class="img-fluid" />
+              </a>
+              <div class="movie-meta">
+                <i class="fa fa-star"></i>
+                {{ movie.vote_average | number: '1.1-2' }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-action">
+    <span class="action-inner">
+      <a href="#" class="action-link">Ver Todos</a>
+    </span>
+  </div>
+</section>

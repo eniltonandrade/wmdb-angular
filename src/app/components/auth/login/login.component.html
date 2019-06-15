@@ -1,0 +1,68 @@
+<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+  <div class="card card-signin my-5">
+    <div class="card-body">
+      <h5 class="card-title text-center">Entrar</h5>
+      <form class="form-signin" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-label-group">
+          <label for="inputEmail">Email</label>
+          <input
+            type="email"
+            id="inputEmail"
+            formControlName="email"
+            class="form-control"
+            placeholder="Email"
+            required
+            autofocus
+          />
+          <div
+            class="alert alert-danger mt-1"
+            role="alert"
+            *ngIf="isFieldInvalid('email')"
+          >
+            Campo email não pode se vazio!
+          </div>
+        </div>
+
+        <div class="form-label-group">
+          <label for="inputPassword">Senha</label>
+          <input
+            type="password"
+            id="inputPassword"
+            formControlName="password"
+            class="form-control"
+            placeholder="Senha"
+            required
+          />
+          <div
+            class="alert alert-danger mt-1"
+            role="alert"
+            *ngIf="isFieldInvalid('password')"
+          >
+            Campo senha não pode ser vazio!
+          </div>
+        </div>
+        <br />
+        <p class="text-center">
+          <a href="#">Esqueceu a senha?</a> |
+          <a [routerLink]="['/registrar']">Registrar</a>
+        </p>
+        <button
+          *ngIf="!isLoading"
+          class="btn btn-lg btn-primary btn-block text-uppercase mt-4"
+          type="submit"
+        >
+          Entrar
+        </button>
+
+        <div
+          *ngIf="isLoading"
+          class="btn btn-lg btn-primary btn-block text-uppercase mt-4"
+        >
+          <div class="spinner-border text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

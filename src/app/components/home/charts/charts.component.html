@@ -1,0 +1,45 @@
+<section class="yir-genres">
+  <div class="container">
+    <header>
+      <h2 class="section-title">Top Gêneros & Estúdios</h2>
+    </header>
+    <div class="row justify-content-md-center" *ngIf="stats">
+      <div class="col-12 col-xl-6 mb-3">
+        <div
+          class="film-breakdown-graph-bar"
+          *ngFor="let genre of stats.genres"
+        >
+          <a class="film-breakdown-graph-bar-label" href="#">
+            {{ genre.name }}
+          </a>
+          <div class="film-breakdown-graph-bar-value-container">
+            <div
+              class="film-breakdown-graph-bar-value"
+              [style.width]="genre.percentage + '%'"
+            >
+              <span>{{ genre.count }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-6">
+        <div
+          class="film-breakdown-graph-bar"
+          *ngFor="let company of stats.companies"
+        >
+          <a class="film-breakdown-graph-bar-label" href="#">
+            {{ company.name }}
+          </a>
+          <div class="film-breakdown-graph-bar-value-container">
+            <div
+              class="film-breakdown-graph-bar-value"
+              [style.width]="company.percentage + '%'"
+            >
+              <span>{{ company.count }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

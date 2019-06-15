@@ -1,0 +1,48 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xl-3">
+        <header>
+          <h2>Filmes Assitidos</h2>
+          <div class="action"></div>
+        </header>
+      </div>
+      <div class="col-sm-12 col-xl-9">
+        <div
+          class="list-inline d-flex justify-content-center align-items-center"
+        >
+          <div class="list-inline-item">
+            <strong
+              ><ng2-odometer
+                [number]="count"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <div class="stats-label">Total</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="list-inline-item">
+            <strong
+              ><ng2-odometer
+                [number]="year"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <div class="stats-label">Neste Ano</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="list-inline-item">
+            <strong
+              ><ng2-odometer
+                [number]="month"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <div class="stats-label">Neste Mês</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

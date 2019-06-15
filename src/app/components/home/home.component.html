@@ -1,19 +1,29 @@
-<home-statics-top></home-statics-top>
-<div class="poster-gallery d-block mt-5 ">
-  <h4>Assistidos Recentemente</h4>
-
-  <div class="row" *ngIf="movies">
-    <movie-list-item
-      *ngFor="let movie of movies.data"
-      [movie]="movie"
-    ></movie-list-item>
-  </div>
-
-  <div *ngIf="!movies" class="row" style="height:200px">
-    <div class="col-sm-12 my-auto d-flex justify-content-center">
-      <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
+<section>
+  <div class="container">
+    <div class="inner d-inline-flex justify-content-between">
+      <div class="home-greetings">
+        <h2>Bem Vindo!</h2>
+      </div>
+      <div class="home-top-stats">
+        <ul class="list-inline d-flex">
+          <li class="list-inline-item d-flex flex-column ">
+            <strong>{{ count }}</strong> <span class="label">Total</span>
+            <i class="fas fa-chevron-right"></i>
+          </li>
+          <li class="list-inline-item  d-flex flex-column">
+            <strong>{{ year }}</strong> <span class="label">Esse Ano</span>
+            <i class="fas fa-chevron-right"></i>
+          </li>
+          <li class="list-inline-item  d-flex flex-column">
+            <strong>{{ month }}</strong> <span class="label">Ess Mês</span>
+            <i class="fas fa-chevron-right"></i>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-</div>
+</section>
+<home-carousel-list></home-carousel-list>
+<!-- <home-statics-top></home-statics-top> -->
+<home-time-watched></home-time-watched>
+<home-charts></home-charts>

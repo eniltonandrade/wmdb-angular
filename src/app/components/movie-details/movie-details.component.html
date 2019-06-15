@@ -1,111 +1,109 @@
-<div class="card mt-4">
-  <div class="card-body" *ngIf="ShowContent">
-    <div class="row" *ngIf="movie">
-      <div class="col-sm-12 col-lg-3 mt-2">
-        <div class="sticky-top">
-          <p>
+<div class="loading" *ngIf="isLoading">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div class="container" *ngIf="!isLoading">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/']">Início</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {{ movie.original_title }}
+      </li>
+    </ol>
+  </nav>
+  <div class="card mt-4">
+    <div class="card-body">
+      <div class="row" *ngIf="movie">
+        <div class="col-sm-12 col-lg-3 mt-2">
+          <div class="sticky-top">
             <img src="{{ posterUrl }}" class="mx-auto d-block poster rounded" />
-          </p>
-          <p></p>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-12 col-lg-6 mt-2">
-        <div class="card-title">
-          <h2>
-            {{ movie.title }}
-            <a href="#" style="font-size: 16px">{{
-              movie.release_date | date: 'yyyy'
-            }}</a>
-          </h2>
+        <div class="col-sm-12 col-lg-6 mt-2">
+          <div class="card-title">
+            <h2>
+              {{ movie.title }}
+              <a href="#" style="font-size: 16px">{{
+                movie.release_date | date: 'yyyy'
+              }}</a>
+            </h2>
 
-          <small>{{ movie.original_title }}</small>
+            <small>{{ movie.original_title }}</small>
+            <hr />
+          </div>
+          <p>
+            <a
+              href="#"
+              *ngFor="let genre of movie.genres"
+              class="badge badge-primary mr-1"
+            >
+              {{ genre.name }}</a
+            >
+          </p>
+
+          <p><strong>Sinopse: </strong>{{ movie.overview }}</p>
           <hr />
+          <ngb-tabset>
+            <ngb-tab title="Elenco">
+              <ng-template ngbTabContent>
+                <app-movie-cast [casts]="casts"></app-movie-cast>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Diretor">
+              <ng-template ngbTabContent>
+                <app-movie-cast [casts]="directors"></app-movie-cast>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Estudios">
+              <ng-template ngbTabContent>
+                <ul class="list-unstyled float-left mt-3 d-block">
+                  <li
+                    class="media mb-2 float-left person-item"
+                    *ngFor="let company of movie.production_companies"
+                  >
+                    <a href="">
+                      <img
+                        *ngIf="company.logo_path"
+                        src="https://image.tmdb.org/t/p/w185/{{
+                          company.logo_path
+                        }}"
+                        class="mr-3"
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
         </div>
-        <p>
-          <span
-            *ngFor="let genre of movie.genres"
-            class="badge badge-pill badge-primary mr-1"
-          >
-            {{ genre.name }}</span
-          >
-        </p>
-        <p>
-          <span class="score">
-            <i class="fab fa-imdb"></i>
-            <span class="score-text">{{
-              movie.vote_average | number: '1.1-2'
-            }}</span>
-          </span>
-        </p>
-        <p><strong>Sinopse: </strong>{{ movie.overview }}</p>
-        <p></p>
-        <ngb-tabset>
-          <ngb-tab title="Elenco">
-            <ng-template ngbTabContent>
-              <ul class="list-unstyled float-left mt-3">
-                <li
-                  class="media mb-2 float-left person-item"
-                  *ngFor="let cast of movie.casts.cast"
-                >
-                  <a [routerLink]="['/person', cast.id]">
-                    <img
-                      *ngIf="cast.profile_path"
-                      src="https://image.tmdb.org/t/p/w185/{{
-                        cast.profile_path
-                      }}"
-                      class="profile-img rounded-circle mr-3"
-                      alt=""
-                    />
-                    <img
-                      *ngIf="!cast.profile_path"
-                      src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
-                      class="profile-img rounded-circle mr-3"
-                      alt=""
-                    />
-                  </a>
-                  <div class="media-body">
-                    <h5 class="mt-0">
-                      <a [routerLink]="['/person', cast.id]">{{ cast.name }}</a>
-                    </h5>
-                    {{ cast.character }}
-                  </div>
-                </li>
-              </ul>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab title="Diretor">
-            <ng-template ngbTabContent>
-              <ul class="list-unstyled float-left mt-3 d-block">
-                <li
-                  class="media mb-2 float-left person-item"
-                  *ngFor="let director of directors"
-                >
-                  <img
-                    *ngIf="director.profile_path"
-                    src="https://image.tmdb.org/t/p/w185/{{
-                      director.profile_path
-                    }}"
-                    class="profile-img rounded-circle mr-3"
-                    alt=""
-                  />
-                  <img
-                    *ngIf="!director.profile_path"
-                    src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
-                    class="profile-img rounded-circle mr-3"
-                    alt=""
-                  />
-                  <div class="media-body">
-                    <h5 class="mt-0">{{ director.name }}</h5>
-                    {{ director.job }}
-                  </div>
-                </li>
-              </ul>
-            </ng-template>
-          </ngb-tab>
-        </ngb-tabset>
-      </div>
-      <div class="col-sm-12 col-lg-3 mt-2">
-        <watch-button *ngIf="movie" [movie]="movie"></watch-button>
+        <div class="col-sm-12 col-lg-3 mt-2">
+          <div class="movie-widget-sidebar">
+            <!-- <div class="widget-header">
+              <span class="widget-title">Categories</span>
+            </div> -->
+            <watch-button *ngIf="movie" [movie]="movie"></watch-button>
+            <hr />
+            <div class="widget-stats">
+              <div class="stats-info"><i class="fab fa-imdb"></i></div>
+              <div class="stats-detl">
+                {{ movie.imdbScore | number: '1.1-2' }}
+              </div>
+            </div>
+            <div class="widget-stats">
+              <div class="stats-info">Ranking Geral:</div>
+              <div class="stats-detl">
+                13º
+              </div>
+            </div>
+            <div class="widget-stats">
+              <div class="stats-info">Ranking Ano:</div>
+              <div class="stats-detl">
+                3º
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

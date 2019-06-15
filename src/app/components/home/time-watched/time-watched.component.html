@@ -1,0 +1,58 @@
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xl-3">
+        <header>
+          <h2>Tempo Assistindo</h2>
+          <div class="action"></div>
+        </header>
+      </div>
+      <div class="col-sm-12 col-xl-9" *ngIf="stats">
+        <div
+          class="list-inline d-flex justify-content-center align-items-center"
+        >
+          <div class="list-inline-item">
+            <strong
+              ><ng2-odometer
+                [number]="stats.months"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <div class="stats-label">Mês</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="list-inline-item">
+            <strong
+              ><ng2-odometer
+                [number]="stats.days"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <div class="stats-label">Dias</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="list-inline-item">
+            <strong
+              ><ng2-odometer
+                [number]="stats.hours"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <div class="stats-label">Horas</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="list-inline-item">
+            <strong
+              ><ng2-odometer
+                [number]="stats.minutes"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <div class="stats-label">Minutos</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

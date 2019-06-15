@@ -7,31 +7,35 @@ import { environment } from 'src/environments/environment';
   templateUrl: './nav-search-bar.component.html',
   styleUrls: ['./nav-search-bar.component.css']
 })
-export class NavSearchBarComponent{
-  query:string;
-  data:any;
-  results:any;
+export class NavSearchBarComponent {
+  query: string;
+  data: any;
+  results: any;
   hasResults = false;
-  poster_url= `${environment.TMDB.images.base_url}${environment.TMDB.images.poster_sizes.w154}/`;
+  poster_url = `${environment.TMDB.images.base_url}${
+    environment.TMDB.images.poster_sizes.w154
+  }/`;
 
-  constructor(private tmdb: TmdbService){}
+  constructor(private tmdb: TmdbService) {}
 
   searchMovie() {
-      this.tmdb.searchMovie(this.query).subscribe(x=>{
+    if (this.query.length > 3) {
+      this.tmdb.searchMovie(this.query).subscribe(x => {
         this.data = x;
         this.results = this.data.results;
         this.hasResults = true;
-      })
+      });
+    } else {
+      this.hasResults = false;
+    }
   }
 
-  clearResults(){
+  clearResults() {
     this.hasResults = false;
     this.query = '';
-    
   }
 
-  getSlug(title: string){
+  getSlug(title: string) {
     return this.tmdb.convertToSlug(title);
   }
-
 }

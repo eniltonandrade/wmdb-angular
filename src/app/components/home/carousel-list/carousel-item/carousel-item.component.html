@@ -1,0 +1,10 @@
+<div class="movie-poster">
+  <a [routerLink]="['/filme', movie.tmdbId, slug]">
+    <img [src]="poster_url + movie.poster_path" alt="" class="img-fluid" />
+  </a>
+</div>
+<div class="movie-meta">
+  {{ movie.UserMovies.watchedAt | date: 'dd' }} de
+  {{ movie.UserMovies.watchedAt | date: 'MMMM' }} de
+  {{ movie.UserMovies.watchedAt | date: 'yyyy' }}
+</div>

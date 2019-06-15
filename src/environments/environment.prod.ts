@@ -1,6 +1,8 @@
 export const environment = {
   production: true,
+  api_url: 'http://wmdb-backend.herokuapp.com/api/',
   TMDB: {
+    apiUrl: 'https://api.themoviedb.org/3/',
     apiKey: 'ccb20a13769db99a9b2bc55cb645c989',
     apiLang: 'pt-BR',
     images: {

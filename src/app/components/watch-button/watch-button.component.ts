@@ -28,82 +28,24 @@ export class WatchbuttonComponent implements OnInit, OnDestroy, OnChanges {
   ngOnChanges() {
     console.log(this.movie.id);
 
-    this.subscription = this.movieService
-      .getMovie(this.movie.id)
-      .subscribe(x => {
-        this.response = x;
-        if (this.response.code == '200') {
-          this.watched = true;
-          this.date = this.response.datetime;
-        } else {
-          this.watched = false;
-        }
-      });
+    this.movieService.getMovie(this.movie.id).subscribe(x => {
+      this.response = x;
+      if (this.response.status == 'true') {
+        this.watched = true;
+        this.date = this.response.datetime;
+      } else {
+        this.watched = false;
+      }
+    });
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  ngOnDestroy() {}
 
   onDateSelect() {
     this.date = new Date(this.model.year, this.model.month, this.model.day);
-
-    let castArray = [];
-    let crewArray = [];
-    let genresArray = [];
-
-    genresArray = this.movie.casts.genres.map(genres => {
-      return {
-        tmdbId: genres.id,
-        name: genres.name
-      };
-    });
-
-    castArray = this.movie.casts.cast.map(cast => {
-      return {
-        tmdbId: cast.id,
-        name: cast.name,
-        profile_path: cast.profile_path,
-        gender: cast.gender,
-        character: cast.character,
-        order: cast.order
-      };
-    });
-
-    crewArray = this.movie.casts.crew.map(crew => {
-      return {
-        department: crew.department,
-        gender: crew.gender,
-        tmdbId: crew.id,
-        job: crew.job,
-        name: crew.name,
-        profile_path: crew.profile_path
-      };
-    });
-
-    console.log(castArray);
-    console.log(crewArray);
-    console.log(genresArray);
-
     this.watched = true;
-    let request = {
-      id: this.movie.id,
-      imdb_id: this.movie.imdb_id,
-      title: this.movie.title,
-      original_title: this.movie.original_title,
-      poster_path: this.movie.poster_path,
-      release_date: this.movie.release_date,
-      overview: this.movie.overview,
-      vote_average: this.movie.vote_average,
-      runtime: this.movie.runtime,
-      genres: this.movie.genres,
-      crew: this.movie.casts.crew.filter(x => x.job == 'Director'),
-      cast: this.movie.casts.cast,
-      datetime: this.date.toLocaleString()
-    };
-    console.log(request);
-    this.movieService.setWatched(request).subscribe(response => {
-      console.log(response);
+
+    this.movieService.setWatched(this.movie, this.date).subscribe(response => {
       this.watched = true;
     });
   }

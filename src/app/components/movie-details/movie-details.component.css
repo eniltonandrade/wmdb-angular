@@ -1,7 +1,15 @@
-.profile-img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
+.list-unstyled {
+  /* background-color: #14181c !important;
+  padding: 16px; */
+  width: 100%;
+}
+
+.loading {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-title h2 {
@@ -13,29 +21,6 @@
 .spinner-area {
   height: 100%;
 }
-.person-item {
-  width: 258px;
-  height: 75px;
-  padding: 0 5px;
-  overflow: hidden;
-}
-
-.person-item a {
-  color: white;
-}
-.person-item a:hover {
-  color: white;
-  text-decoration: none;
-}
-
-.media-body {
-  font-size: 12px;
-}
-
-.media-body h5 {
-  font-size: 15px;
-}
-
 .poster {
   border: 1px solid #ebebeb;
   width: 90%;
@@ -71,4 +56,53 @@ h5 {
 
 .sticky-top {
   top: 15px;
+}
+
+/*Movie Widget Sidebar*/
+.movie-widget-sidebar {
+  width: 100%;
+  background-color: #1a222d;
+  padding: 25px 20px;
+}
+.widget-title {
+  font-size: 18px;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  padding-bottom: 13px;
+  border-bottom-style: solid;
+  border-width: 1px;
+  color: #fff;
+  border-bottom-color: #2f2f33;
+  display: block;
+  margin-bottom: 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.widget-stats {
+  width: 100%;
+  height: 45px;
+  position: relative;
+  margin: 10px 0;
+}
+
+.widget-stats .stats-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 14px;
+  line-height: 42px;
+}
+
+.widget-stats .stats-info i {
+  font-size: 38px;
+  line-height: 42px;
+}
+
+.widget-stats .stats-detl {
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 42px;
+  font-size: 18px;
+  font-weight: bold;
 }

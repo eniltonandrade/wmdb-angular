@@ -1,0 +1,67 @@
+<ul class="list-unstyled float-left mt-3">
+  <li class="media mb-2 float-left person-item" *ngFor="let cast of castsLess">
+    <a [routerLink]="['/person', cast.id]">
+      <img
+        *ngIf="cast.profile_path"
+        src="https://image.tmdb.org/t/p/w185/{{ cast.profile_path }}"
+        class="profile-img rounded-circle mr-3"
+        alt=""
+      />
+      <img
+        *ngIf="!cast.profile_path"
+        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+        class="profile-img rounded-circle mr-3"
+        alt=""
+      />
+    </a>
+    <div class="media-body">
+      <h5 class="mt-0">
+        <a [routerLink]="['/person', cast.id]">{{ cast.name }}</a>
+      </h5>
+      {{ cast.character }}
+    </div>
+  </li>
+  <div
+    [class.collapsed]="isCollapsed"
+    *ngIf="!isCollapsed; else showmore"
+  ></div>
+</ul>
+<div class="btn-toogle" *ngIf="castsMore">
+  <div
+    class="btn btn-secondary btn-sm"
+    (click)="isCollapsed = !isCollapsed"
+    *ngIf="!isCollapsed; else showless"
+  >
+    Mostrar Todos
+  </div>
+  <ng-template #showless>
+    <div class="btn btn-secondary btn-sm" (click)="isCollapsed = !isCollapsed">
+      Mostrar Menos
+    </div></ng-template
+  >
+</div>
+
+<ng-template #showmore>
+  <li class="media mb-2 float-left person-item" *ngFor="let cast of castsMore">
+    <a [routerLink]="['/person', cast.id]">
+      <img
+        *ngIf="cast.profile_path"
+        src="https://image.tmdb.org/t/p/w185/{{ cast.profile_path }}"
+        class="profile-img rounded-circle mr-3"
+        alt=""
+      />
+      <img
+        *ngIf="!cast.profile_path"
+        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+        class="profile-img rounded-circle mr-3"
+        alt=""
+      />
+    </a>
+    <div class="media-body">
+      <h5 class="mt-0">
+        <a [routerLink]="['/person', cast.id]">{{ cast.name }}</a>
+      </h5>
+      {{ cast.character }}
+    </div>
+  </li>
+</ng-template>
