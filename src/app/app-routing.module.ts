@@ -1,3 +1,4 @@
+import { SearchMobileComponent } from './components/search-mobile/search-mobile.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './components/auth/login/login.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
@@ -14,7 +15,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'registrar', component: SigninComponent }
+  { path: 'registrar', component: SigninComponent },
+  {
+    path: 'pesquisar',
+    component: SearchMobileComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

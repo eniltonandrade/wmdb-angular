@@ -28,6 +28,7 @@ import { CarouselListComponent } from './components/home/carousel-list/carousel-
 import { SlickModule } from 'ngx-slick';
 import { TimeWatchedComponent } from './components/home/time-watched/time-watched.component';
 import { CarouselItemComponent } from './components/home/carousel-list/carousel-item/carousel-item.component';
+import { SearchMobileComponent } from './components/search-mobile/search-mobile.component';
 
 registerLocaleData(localeBr, 'pt');
 
@@ -48,7 +49,8 @@ registerLocaleData(localeBr, 'pt');
     ChartsComponent,
     CarouselListComponent,
     TimeWatchedComponent,
-    CarouselItemComponent
+    CarouselItemComponent,
+    SearchMobileComponent
   ],
   imports: [
     BrowserModule,

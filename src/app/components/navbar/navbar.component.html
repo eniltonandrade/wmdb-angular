@@ -6,21 +6,35 @@
   <div class="container">
     <a class="navbar-brand">WMDB</a>
     <button
-      class="navbar-toggler"
-      data-target="#main-navbar"
-      data-toggle="collapse"
-      aria-controls="main-navbar"
+      class="navbar-toggler hidden-sm-up"
+      type="button"
+      (click)="isNavbarCollapsed = !isNavbarCollapsed"
+      data-target="#navbarsDefault"
+      aria-controls="navbarsDefault"
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div id="main-navbar" class="collapse navbar-collapse">
+    <div
+      id="main-navbar"
+      [ngbCollapse]="isNavbarCollapsed"
+      class="collapse navbar-collapse"
+    >
       <nav-search-bar></nav-search-bar>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/']"
+          <a class="nav-link" [routerLink]="['/']" (click)="collapse()"
             >Início <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item d-block d-sm-none">
+          <a
+            class="nav-link"
+            [routerLink]="['/pesquisar']"
+            aria-disabled="true"
+            (click)="collapse()"
+            >Pesquisar</a
           >
         </li>
         <li class="nav-item">

@@ -5,7 +5,10 @@
       <div class="col-lg-12 col-xl-3">
         <header>
           <h2>Filmes Assistidos Recentemente</h2>
-          <div class="section-movies-carousel-aside-header" *ngIf="movies">
+          <div
+            class="section-movies-carousel-aside-header d-none d-lg-flex"
+            *ngIf="movies"
+          >
             <button
               (click)="slickModal.slickPrev()"
               class="slick-prev slick-arrow"

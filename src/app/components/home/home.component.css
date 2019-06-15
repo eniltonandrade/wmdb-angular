@@ -1,6 +1,9 @@
 section {
   padding: 27px 0;
 }
+.home-greetings {
+  padding: 10px;
+}
 
 .inner {
   width: 100%;

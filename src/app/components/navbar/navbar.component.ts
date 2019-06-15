@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class NavbarComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
   user: any;
+  isNavbarCollapsed = true;
 
   constructor(private authService: AuthService) {}
 
@@ -20,6 +21,11 @@ export class NavbarComponent implements OnInit {
       this.user = user;
     });
   }
+
+  collapse() {
+    this.isNavbarCollapsed = true;
+  }
+
   onLogout() {
     this.authService.logout();
   }
