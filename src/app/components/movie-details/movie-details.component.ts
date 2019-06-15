@@ -3,6 +3,7 @@ import { TmdbService } from './../../services/tmdb.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-movie-details',
@@ -18,7 +19,10 @@ export class MovieDetailsComponent implements OnInit {
   producers = [];
   writers = [];
   directors = [];
-  imgBaseUrl = 'https://image.tmdb.org/t/p/w342';
+  imgBaseUrl = `${environment.TMDB.images.base_url}${
+    environment.TMDB.images.poster_sizes.w500
+  }/`;
+
   posterUrl: string;
   movieID: number;
   movie: any;

@@ -1,25 +1,36 @@
+
+        
+
+
 <div class="search">
-  <input class="form-control" type="search" name="serach" />
+    <div class="input-group">
+        <input class="form-control py-2 border-right-0 nav-search" type="search" value="search" id="example-search-input" (keyup)="searchMovie()"
+        [(ngModel)]="query">
+        <span class="input-group-append">
+            <div class="input-group-text"><i class="fa fa-search"></i></div>
+        </span>
+    </div>
 </div>
-<div class="results">
-  <div class="card">
-    <h5 class="card-header">The Avengers - Os Vingadores (2010)</h5>
-    <a href="#">
+<div class="results" *ngIf="query">
+  <div class="card" *ngFor="let result of results">
+    <h5 class="card-header"></h5>
+    <a
+      [routerLink]="['/filme', result.id, getSlug(result.title)]"
+      *ngIf="result.backdrop_path"
+    >
       <img
         class="card-img-top"
-        src="http://image.tmdb.org/t/p/w780/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg"
+        [src]="poster_url + result.backdrop_path"
         alt="Card image cap"
       />
     </a>
-  </div>
-  <div class="card">
-    <h5 class="card-header">The Avengers - Os Vingadores (2010)</h5>
-    <a href="#">
-      <img
-        class="card-img-top"
-        src="http://image.tmdb.org/t/p/w780/hbn46fQaRmlpBuUrEiFqv0GDL6Y.jpg"
-        alt="Card image cap"
-      />
-    </a>
+    <div class="card-body">
+      <a [routerLink]="['/filme', result.id, getSlug(result.title)]">
+        <h5 class="card-title">{{ result.title }}</h5></a
+      >
+      <div class="card-text">
+        {{ result.original_title }} ({{ result.release_date | date: 'yyyy' }})
+      </div>
+    </div>
   </div>
 </div>

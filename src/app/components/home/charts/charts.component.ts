@@ -13,7 +13,6 @@ export class ChartsComponent implements OnInit {
   ngOnInit() {
     this.statsService.getTopChartInfo().subscribe(result => {
       this.stats = result.results;
-      console.log(this.stats);
     });
   }
 }
