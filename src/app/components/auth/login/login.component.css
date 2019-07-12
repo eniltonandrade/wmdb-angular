@@ -42,3 +42,8 @@
   position: relative;
   margin-bottom: 1rem;
 }
+
+.spinner-border {
+  width: 20px;
+  height: 20px;
+}

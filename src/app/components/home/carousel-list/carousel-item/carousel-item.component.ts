@@ -2,6 +2,8 @@ import { TmdbService } from './../../../../services/tmdb.service';
 import { Movie } from './../../../../models/movie.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 @Component({
   selector: 'carousel-item',
@@ -10,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CarouselItemComponent implements OnInit {
   @Input('movie') movie: Movie;
+  date;
   poster_url = `${environment.TMDB.images.base_url}${
     environment.TMDB.images.poster_sizes.w342
   }/`;
@@ -18,5 +21,9 @@ export class CarouselItemComponent implements OnInit {
 
   ngOnInit() {
     this.slug = this.tmdb.convertToSlug(this.movie.title);
+    moment.locale('pt-BR');
+    this.date = moment(this.movie.UserMovies.watchedAt)
+      .startOf('hour')
+      .fromNow();
   }
 }

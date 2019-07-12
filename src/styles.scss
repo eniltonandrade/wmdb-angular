@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap');
 @import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
-
+*:focus {
+  outline: none;
+}
 //Colors
 $primary: #6ac045;
 $secondary: #1a222d;
@@ -32,6 +34,16 @@ $navbar-dark-color: #fff;
 $card-border-width: 0;
 $card-bg: none;
 $popover-header-color: $secondary;
+
+//Pagination
+$pagination-bg: #1a222d;
+$pagination-border-color: #14181c;
+$pagination-disabled-bg: #1a222d;
+$pagination-disabled-border-color: #14181c;
+$pagination-active-color: #1a222d;
+$pagination-hover-color: #1a222d;
+$pagination-hover-bg: #6ac045;
+$pagination-hover-border-color: #14181c;
 
 //breadcomb
 $breadcrumb-bg: #131722;

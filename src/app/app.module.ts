@@ -16,7 +16,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { registerLocaleData } from '@angular/common';
 import localeBr from '@angular/common/locales/pt';
-import { MovieListItemComponent } from './components/movie-list-item/movie-list-item.component';
+import { MovieListItemComponent } from './components/movies/movie-list-item/movie-list-item.component';
 import { WatchbuttonComponent } from './components/watch-button/watch-button.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
@@ -29,6 +29,12 @@ import { SlickModule } from 'ngx-slick';
 import { TimeWatchedComponent } from './components/home/time-watched/time-watched.component';
 import { CarouselItemComponent } from './components/home/carousel-list/carousel-item/carousel-item.component';
 import { SearchMobileComponent } from './components/search-mobile/search-mobile.component';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { MoviesComponent } from './components/movies/movies.component';
+import { MomentPipe } from './helpers/moment.pipe';
+import { MovieListComponent } from './components/movies/movie-list/movie-list.component';
+import { MoviesSidebarComponent } from './components/movies/movies-sidebar/movies-sidebar.component';
+import { PeopleComponent } from './components/movies/people/people.component';
 
 registerLocaleData(localeBr, 'pt');
 
@@ -50,7 +56,12 @@ registerLocaleData(localeBr, 'pt');
     CarouselListComponent,
     TimeWatchedComponent,
     CarouselItemComponent,
-    SearchMobileComponent
+    SearchMobileComponent,
+    MoviesComponent,
+    MomentPipe,
+    MovieListComponent,
+    MoviesSidebarComponent,
+    PeopleComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +82,8 @@ registerLocaleData(localeBr, 'pt');
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

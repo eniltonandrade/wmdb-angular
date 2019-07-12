@@ -1,7 +1,7 @@
-import { Movie } from '../../models/movie.model';
-import { TmdbService } from './../../services/tmdb.service';
+import { Movie } from 'src/app/models/movie.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { TmdbService } from 'src/app/services/tmdb.service';
 
 @Component({
   selector: 'movie-list-item',
@@ -13,8 +13,6 @@ export class MovieListItemComponent implements OnInit {
     environment.TMDB.images.poster_sizes.w342
   }/`;
   slug: string;
-  whole = 0;
-  decimal = 0;
 
   @Input('movie') movie: Movie;
 
@@ -22,7 +20,5 @@ export class MovieListItemComponent implements OnInit {
 
   ngOnInit() {
     this.slug = this.tmdb.convertToSlug(this.movie.title);
-    this.whole = Math.floor(this.movie.vote_average);
-    this.decimal = this.whole - this.movie.vote_average;
   }
 }

@@ -10,9 +10,9 @@ import { StatsService } from 'src/app/services/stats.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  month: number = 0;
-  count: number = 0;
-  year: number = 0;
+  month: number;
+  count: number;
+  year: number;
   constructor(private statsService: StatsService) {}
 
   ngOnInit() {

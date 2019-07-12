@@ -1,7 +1,4 @@
-<nav
-  class="navbar navbar-expand-lg navbar-dark bg-dark"
-  *ngIf="isLoggedIn$ | async as isLoggedIn"
->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <!-- *ngIf="isLoggedIn$ | async as isLoggedIn" -->
   <div class="container">
     <a class="navbar-brand">WMDB</a>
@@ -38,9 +35,7 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/']" aria-disabled="true"
-            >Filmes</a
-          >
+          <a class="nav-link" [routerLink]="['/filmes']" aria-disabled="true">Filmes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" aria-disabled="true">Atores</a>
@@ -64,14 +59,8 @@
           >
             {{ user.name }}
           </a>
-          <div
-            class="dropdown-menu"
-            ngbDropdownMenu
-            aria-labelledby="navbarDropdown"
-          >
-            <a class="dropdown-item" ngbDropdownItem (click)="onLogout()"
-              >Sair</a
-            >
+          <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" ngbDropdownItem (click)="onLogout()">Sair</a>
           </div>
         </li>
       </ul>

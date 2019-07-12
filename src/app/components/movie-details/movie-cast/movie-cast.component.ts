@@ -1,7 +1,12 @@
 import { Cast } from './../../../models/cast.model';
-import { Component, OnInit, Input } from '@angular/core';
-import { CastExpr } from '@angular/compiler';
-import { elementStyleProp } from '@angular/core/src/render3';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  SimpleChange
+} from '@angular/core';
 
 @Component({
   selector: 'app-movie-cast',
@@ -17,6 +22,19 @@ export class MovieCastComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    if (this.casts.length > 4) {
+      this.castsLess = this.casts.slice(0, 4);
+      this.castsMore = this.casts.slice(4);
+    } else {
+      this.castsLess = this.casts;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const casts: SimpleChange = changes.casts;
+    console.log('prev value: ', casts.previousValue);
+    console.log('got name: ', casts.currentValue);
+    this.casts = casts.currentValue;
     if (this.casts.length > 4) {
       this.castsLess = this.casts.slice(0, 4);
       this.castsMore = this.casts.slice(4);

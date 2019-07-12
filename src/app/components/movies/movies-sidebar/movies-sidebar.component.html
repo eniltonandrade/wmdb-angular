@@ -1,0 +1,26 @@
+<div class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-header"><span>Gêneros</span></div>
+    <ul class="list-unstyled genre-list">
+      <li *ngFor="let genre of genres" class="genre-list-item">
+        <a [routerLink]="['/generos']"> {{ genre.name }} ({{ genre.Count }})</a>
+      </li>
+    </ul>
+    <div class="sidebar-header"><span>Filmes por Ano</span></div>
+    <ul class="list-inline year-list">
+      <li class="year-list-item" *ngFor="let year of years">
+        <a [routerLink]="['ano', year.year]">
+          <span>{{ year.year }}</span>
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-header"><span>Estúdios</span></div>
+    <ul class="list-unstyled one-column">
+      <li *ngFor="let company of companies" class="genre-list-item">
+        <a [routerLink]="['/estudios', company.tmdbId]">
+          {{ company.name }} ({{ company.Count }})</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>

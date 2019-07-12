@@ -1,6 +1,6 @@
-import { User } from './../../models/user.model';
+import { UserService } from './../../services/user.service';
 import { AuthService } from './../../auth/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,16 +10,18 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
-  user: any;
   isNavbarCollapsed = true;
+  user: any;
+  @Input('user') currentUser: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private userService: UserService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn;
-    this.authService.getUserApp().subscribe(user => {
+    this.userService.getUser(this.currentUser.userId).subscribe(user => {
       this.user = user;
-      console.log(this.user);
     });
   }
 

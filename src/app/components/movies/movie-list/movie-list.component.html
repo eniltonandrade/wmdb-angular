@@ -1,0 +1,17 @@
+<div class="movie-wrapper row">
+  <movie-list-item
+    class="col-3"
+    *ngFor="
+      let movie of movies | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
+    "
+    [movie]="movie"
+  ></movie-list-item>
+  <div class="movie-pagination d-flex justify-content-center">
+    <ngb-pagination
+      [(page)]="page"
+      [maxSize]="5"
+      [pageSize]="pageSize"
+      [collectionSize]="movieCount"
+    ></ngb-pagination>
+  </div>
+</div>

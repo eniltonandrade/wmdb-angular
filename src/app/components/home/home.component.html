@@ -4,18 +4,36 @@
       <div class="home-greetings">
         <h2>Bem Vindo!</h2>
       </div>
-      <div class="home-top-stats">
+      <div class="home-top-stats" *ngIf="count">
         <ul class="list-inline d-flex">
           <li class="list-inline-item d-flex flex-column ">
-            <strong>{{ count }}</strong> <span class="label">Total</span>
+            <strong
+              ><ng2-odometer
+                [number]="count"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <span class="label">Total</span>
             <i class="fas fa-chevron-right"></i>
           </li>
           <li class="list-inline-item  d-flex flex-column">
-            <strong>{{ year }}</strong> <span class="label">Esse Ano</span>
+            <strong
+              ><ng2-odometer
+                [number]="year"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <span class="label">Esse Ano</span>
             <i class="fas fa-chevron-right"></i>
           </li>
           <li class="list-inline-item  d-flex flex-column">
-            <strong>{{ month }}</strong> <span class="label">Ess Mês</span>
+            <strong
+              ><ng2-odometer
+                [number]="month"
+                [config]="{ format: 'd', animation: 'slide' }"
+              ></ng2-odometer
+            ></strong>
+            <span class="label">Ess Mês</span>
             <i class="fas fa-chevron-right"></i>
           </li>
         </ul>

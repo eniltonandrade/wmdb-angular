@@ -34,7 +34,7 @@
           </div>
           <p>
             <a
-              href="#"
+              [routerLink]="['/genres', genre.id]"
               *ngFor="let genre of movie.genres"
               class="badge badge-primary mr-1"
             >
@@ -65,9 +65,7 @@
                     <a href="">
                       <img
                         *ngIf="company.logo_path"
-                        src="https://image.tmdb.org/t/p/w185/{{
-                          company.logo_path
-                        }}"
+                        src="https://image.tmdb.org/t/p/w185/{{ company.logo_path }}"
                         class="mr-3"
                       />
                     </a>

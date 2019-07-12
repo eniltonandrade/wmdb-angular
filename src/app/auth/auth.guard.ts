@@ -15,19 +15,28 @@ import { map, take } from 'rxjs/operators';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
-    return this.authService.isLoggedIn.pipe(
-      take(1),
-      map((isLoggedIn: boolean) => {
-        if (!isLoggedIn) {
-          this.router.navigate(['/login']);
-          return false;
-        }
-        return true;
-      })
-    );
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const currentUser = this.authService.currentUserValue;
+    if (currentUser) {
+      return true;
+    }
+    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+    return false;
   }
+
+  // canActivate(
+  //   next: ActivatedRouteSnapshot,
+  //   state: RouterStateSnapshot
+  // ): Observable<boolean> {
+  //   return this.authService.isLoggedIn.pipe(
+  //     take(1),
+  //     map((isLoggedIn: boolean) => {
+  //       if (!isLoggedIn) {
+  //         this.router.navigate(['/login']);
+  //         return false;
+  //       }
+  //       return true;
+  //     })
+  //   );
+  // }
 }

@@ -1,0 +1,72 @@
+.sidebar {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  background-color: #1c212e;
+}
+
+.sidebar-inner {
+  padding: 25px 20px;
+  margin-bottom: 25px;
+}
+
+.sidebar-inner .sidebar-header span {
+  margin-bottom: 30px !important;
+  font-size: 22px !important;
+  padding-bottom: 13px !important;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  border-bottom-style: solid;
+  border-width: 1px;
+  display: block;
+  color: #fff;
+  border-bottom-color: #2f2f33;
+}
+
+.sidebar-inner ul.genre-list {
+  column-count: 2;
+}
+
+.sidebar-inner li.genre-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.sidebar-inner li.genre-list-item a {
+  color: #b4bbc0;
+}
+
+.sidebar-inner li.genre-list-item a:hover {
+  color: #6ac045;
+}
+
+.sidebar-inner ul.year-list {
+  margin-bottom: 43px;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  display: flex;
+}
+
+.sidebar-inner ul.year-list li.year-list-item {
+  padding: 0 5px 5px 0;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 20%;
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+.sidebar-inner ul.year-list li.year-list-item a {
+  padding: 8px 10px;
+  background-color: #181d29;
+  display: block;
+}
+
+.sidebar-inner ul.year-list li.year-list-item a:hover {
+  color: #181d29;
+  background-color: #6ac045;
+}

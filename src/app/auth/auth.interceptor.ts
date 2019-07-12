@@ -2,24 +2,35 @@ import { AuthService } from './auth.service';
 import {
   HttpInterceptor,
   HttpRequest,
-  HttpHandler
+  HttpHandler,
+  HttpEvent
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const authToken = this.authService.getToken();
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    // add authorization header with jwt token if available
 
-    if (req.url.indexOf(environment.TMDB.apiUrl) > -1) {
-      return next.handle(req);
+    if (request.url.indexOf(environment.TMDB.apiUrl) > -1) {
+      return next.handle(request);
     }
-    const authRequest = req.clone({
-      headers: req.headers.set('Authorization', 'Bearer ' + authToken)
-    });
-    return next.handle(authRequest);
+    let currentUser = this.authService.currentUserValue;
+    if (currentUser && currentUser.token) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${currentUser.token}`
+        }
+      });
+    }
+
+    return next.handle(request);
   }
 }

@@ -1,5 +1,4 @@
 import { Movie } from './../models/movie.model';
-import { AuthService } from './../auth/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -17,16 +16,35 @@ export class MovieService {
   private API_URL = environment.api_url;
   constructor(private http: HttpClient) {}
 
-  getAll() {
-    return this.http.get(`${this.API_URL}users/movies`);
+  getList(limit: number) {
+    return this.http.get<{ status: boolean; data: any }>(
+      `${this.API_URL}movies?limit=${limit}`
+    );
+  }
+
+  getMoviesByPerson(tmdbId) {
+    return this.http.get<{ status: boolean; data: any }>(
+      `${this.API_URL}people/${tmdbId}`
+    );
+  }
+  getYearsRelease() {
+    return this.http.get<{ status: boolean; data: any }>(`${this.API_URL}movies/years`);
+  }
+
+  getCompanies() {
+    return this.http.get<{ status: boolean; data: any }>(`${this.API_URL}companies`);
+  }
+
+  getGenres() {
+    return this.http.get<{ status: boolean; data: any }>(`${this.API_URL}genres`);
   }
 
   getMovie(id: number) {
-    return this.http.get(`${this.API_URL}movies/${id}`);
+    return this.http.get<{ status: boolean; data: any }>(`${this.API_URL}movies/${id}`);
   }
 
   getRecentMovies() {
-    return this.http.get<{ status: boolean; movies: Movie[] }>(
+    return this.http.get<{ status: boolean; data: any }>(
       `${this.API_URL}movies?limit=10&order=time&dir=desc`
     );
   }

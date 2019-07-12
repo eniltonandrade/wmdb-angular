@@ -1,0 +1,18 @@
+<div class="movie mb-3">
+  <div class="movie-poster">
+    <a [routerLink]="['/filme', movie.tmdbId, slug]" class="movie-link">
+      <img src="{{ poster_url + movie.poster_path }}" alt="" />
+    </a>
+  </div>
+  <div class="movie-info">
+    <div class="movie-meta">
+      <span class="movie-date-watched">
+        {{ movie.UserMovies.watchedAt | moment: 'LL' }},
+        {{ movie.vote_average }}
+      </span>
+    </div>
+    <a [routerLink]="['/filme', movie.tmdbId, slug]">
+      <h3>{{ movie.title }}</h3>
+    </a>
+  </div>
+</div>
