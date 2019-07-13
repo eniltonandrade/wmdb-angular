@@ -40,3 +40,7 @@ ngb-datepicker {
 ngb-datepicker .ngb-dp-header.bg-light {
   background-color: #4e5d6c;
 }
+
+.time-wrap {
+  width: 100px;
+}

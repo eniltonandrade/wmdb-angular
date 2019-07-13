@@ -14,7 +14,8 @@ export class WatchbuttonComponent implements OnInit, OnDestroy, OnChanges {
   @Input('movie') movie: any;
   watched = false;
   model: NgbDateStruct;
-  date: any;
+  date: Date;
+  time = { hour: 0, minute: 0 };
   response: any;
   subscription: Subscription;
 
@@ -24,6 +25,8 @@ export class WatchbuttonComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
     this.model = this.calendar.getToday();
+    var today = new Date();
+    this.time = { hour: today.getHours(), minute: today.getMinutes() };
   }
 
   ngOnChanges() {
@@ -41,7 +44,13 @@ export class WatchbuttonComponent implements OnInit, OnDestroy, OnChanges {
   ngOnDestroy() {}
 
   onDateSelect() {
-    this.date = new Date(this.model.year, this.model.month - 1, this.model.day);
+    this.date = new Date(
+      this.model.year,
+      this.model.month - 1,
+      this.model.day,
+      this.time.hour,
+      this.time.minute
+    );
     this.watched = true;
     this.movieService.setWatched(this.movie, this.date).subscribe(response => {
       this.watched = true;

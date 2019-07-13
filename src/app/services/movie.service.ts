@@ -104,7 +104,7 @@ export class MovieService {
       backdrop_path: movie.backdrop_path,
       vote_average: movie.imdbScore,
       runtime: movie.runtime,
-      watchedAt: date.toLocaleString(),
+      watchedAt: date.toString(),
       companies: companiesArray,
       user: [1],
       genres: genresArray,

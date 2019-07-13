@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://wmdb-node.herokuapp.com/api/',
+  api_url: 'http://localhost:3000/api/',
   TMDB: {
     apiUrl: 'https://api.themoviedb.org/3/',
     apiKey: 'ccb20a13769db99a9b2bc55cb645c989',

@@ -32,8 +32,6 @@ export class MovieCastComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     const casts: SimpleChange = changes.casts;
-    console.log('prev value: ', casts.previousValue);
-    console.log('got name: ', casts.currentValue);
     this.casts = casts.currentValue;
     if (this.casts.length > 4) {
       this.castsLess = this.casts.slice(0, 4);

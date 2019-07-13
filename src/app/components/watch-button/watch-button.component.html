@@ -15,6 +15,9 @@
     [(ngModel)]="model"
     (navigate)="date = $event.next"
   ></ngb-datepicker>
+  <div class="time-wrap m-auto">
+    <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+  </div>
   <button
     type="button"
     class="btn btn-primary btn-sm btn-block"

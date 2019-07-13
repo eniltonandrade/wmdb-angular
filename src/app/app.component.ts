@@ -14,9 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.currentUser.subscribe(x => {
-      if (!x) {
-        this.router.navigate(['/login']);
-      }
       this.currentUser = x;
     });
   }
